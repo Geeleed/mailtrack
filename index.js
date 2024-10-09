@@ -1,7 +1,7 @@
 require("dotenv").config();
 const app = require("express")();
 const nodemailer = require("nodemailer");
-const path = require('path');
+const path = require("path");
 const hostname = process.env.server_hostname_global;
 // const hostname = process.env.server_hostname_local;
 app.get("/", async (req, res) => {
@@ -12,7 +12,9 @@ app.get("/", async (req, res) => {
 app.get("/image", async (req, res) => {
   try {
     console.log("อีเมลถูกเปิดแล้ว");
-    await alertmsg();
+    await fetch(hostname + "/alert")
+      .then((r) => r.json())
+      .then((r) => console.log(r));
     res.sendFile(path.join(__dirname, "track.png"));
   } catch (error) {
     console.error("Error occurred:", error);
@@ -62,7 +64,7 @@ app.get("/send", async (req, res) => {
     res.json({ msg: "fail" });
   }
 });
-async function alertmsg() {
+app.get("/alert", async (req, res) => {
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -73,36 +75,37 @@ async function alertmsg() {
     });
     const message = {
       from: process.env.nodemailer_user,
-    //   to: "surasak.kaewpho@gmail.com",
-      to: "jobjob.thailand@gmail.com",
+      to: "surasak.kaewpho@gmail.com",
       subject: "Test nodemailer",
       text: "Plaintext version of the message",
       //   html: "<p>HTML version of the message</p>",
       html: `
-        <!DOCTYPE html>
-          <html lang="en">
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Document</title>
-          </head>
-          <body>
-          อีเมลของคุณถูกเปิดอ่านแล้ว
-          </body>
-          </html>
-      `,
+            <!DOCTYPE html>
+              <html lang="en">
+              <head>
+                  <meta charset="UTF-8">
+                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                  <title>Document</title>
+              </head>
+              <body>
+              อีเมลของคุณถูกเปิดอ่านแล้ว
+              </body>
+              </html>
+          `,
     };
-    console.log("sending email...")
+    console.log("sending email...");
     transporter.sendMail(message, (err, info) => {
-        if (err) console.log(err);
-        else {
-            console.log(info);
-        }
+      if (err) console.log(err);
+      else {
+        console.log(info);
+      }
     });
-    console.log("sent email")
+    console.log("sent email");
+    res.json({ msg: "ok" });
   } catch (error) {
     console.error(error);
+    res.json({ msg: "err" });
   }
-}
+});
 
-app.listen(8500, () => console.log("ระบบเปิดแล้ว","http://localhost:8500"));
+app.listen(8500, () => console.log("ระบบเปิดแล้ว", "http://localhost:8500"));
