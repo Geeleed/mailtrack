@@ -62,7 +62,7 @@ app.get("/send", async (req, res) => {
     res.json({ msg: "fail" });
   }
 });
-async function alertmsg(req, res) {
+async function alertmsg() {
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
