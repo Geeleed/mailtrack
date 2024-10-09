@@ -16,7 +16,8 @@ app.get("/image", async (req, res) => {
       .then((r) => {
         console.log("อีเมลถูกเปิดแล้ว");
         console.log(r);
-        res.sendFile(path.join(__dirname, "track.png"));
+        // res.sendFile(path.join(__dirname, "track.png"));
+        res.sendFile("",(err)=>console.error(err))
       });
   } catch (error) {
     console.error("Error occurred:", error);
