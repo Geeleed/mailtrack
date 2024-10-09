@@ -47,7 +47,8 @@ app.get("/send", async (req, res) => {
           </head>
           <body>
                 ทดลองระบบ การเปิดอีเมลนี้จะแจ้งเตือนไปยังผู้สมัครว่าคุณได้อ่านข้อความแล้ว
-              <img src="https://mailtrack-brown.vercel.app/image"/>
+              <a href="${hostname}/alert">ส่งแจ้งเตือนว่าอ่านแล้ว</a>
+              <img src="${hostname}/image"/>
           </body>
           </html>
       `,
