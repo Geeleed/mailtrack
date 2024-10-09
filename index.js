@@ -35,8 +35,8 @@ app.get("/send", async (req, res) => {
     });
     const message = {
       from: process.env.nodemailer_user,
-      to: "surasak.kaewpho@gmail.com",
-      //   to: "jobjob.thailand@gmail.com",
+      //   to: "surasak.kaewpho@gmail.com",
+      to: "jobjob.thailand@gmail.com",
       subject: "Test nodemailer",
       //   text: "Plaintext version of the message",
       //   html: "<p>HTML version of the message</p>",
@@ -73,8 +73,8 @@ app.get("/alert", async (req, res) => {
     });
     const message = {
       from: process.env.nodemailer_user,
-      to: "jobjob.thailand@gmail.com",
-      //   to: "surasak.kaewpho@gmail.com",
+      //   to: "jobjob.thailand@gmail.com",
+      to: "surasak.kaewpho@gmail.com",
       subject: "Test nodemailer",
       //   text: "Plaintext version of the message",
       //   html: "<p>HTML version of the message</p>",
