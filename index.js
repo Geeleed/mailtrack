@@ -39,13 +39,7 @@ app.get("/send", async (req, res) => {
       //   text: "Plaintext version of the message",
       //   html: "<p>HTML version of the message</p>",
       html: `
-        <!DOCTYPE html>
           <html lang="en">
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Document</title>
-          </head>
           <body>
                 ทดลองระบบ การเปิดอีเมลนี้จะแจ้งเตือนไปยังผู้สมัครว่าคุณได้อ่านข้อความแล้ว
               <a href="${hostname}/alert">ส่งแจ้งเตือนว่าอ่านแล้ว</a>
@@ -83,13 +77,7 @@ app.get("/alert", async (req, res) => {
     //   text: "Plaintext version of the message",
       //   html: "<p>HTML version of the message</p>",
       html: `
-            <!DOCTYPE html>
               <html lang="en">
-              <head>
-                  <meta charset="UTF-8">
-                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                  <title>Document</title>
-              </head>
               <body>
               อีเมลของคุณถูกเปิดอ่านแล้ว
               </body>
