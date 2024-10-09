@@ -12,7 +12,7 @@ app.get("/image", async (req, res) => {
   //   await fetch(hostname + "/alert").then(() => {
   // });
   await alertmsg().then(() => {
-    res.sendFile("");
+    res.sendFile("track.png");
   });
 });
 app.get("/send", async (req, res) => {
