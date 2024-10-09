@@ -9,7 +9,9 @@ app.get("/", async (req, res) => {
 });
 app.get("/image", async (req, res) => {
   console.log("อีเมลถูกเปิดแล้ว");
-  await fetch(hostname + "/alert").then(() => {
+  //   await fetch(hostname + "/alert").then(() => {
+  // });
+  await alertmsg().then(() => {
     res.sendFile("");
   });
 });
@@ -55,7 +57,7 @@ app.get("/send", async (req, res) => {
     res.json({ msg: "fail" });
   }
 });
-app.get("/alert", async (req, res) => {
+async function alertmsg(req, res) {
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -88,13 +90,11 @@ app.get("/alert", async (req, res) => {
       if (err) console.log(err);
       else {
         console.log(info);
-        res.json({ msg: "sent alert email success" });
       }
     });
   } catch (error) {
     console.error(error);
-    res.json({ msg: "fail" });
   }
-});
+}
 
 app.listen(8500, () => console.log("ระบบเปิดแล้ว"));
