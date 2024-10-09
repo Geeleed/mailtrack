@@ -45,7 +45,7 @@ app.get("/send", async (req, res) => {
           <body>
                 ทดลองระบบ การเปิดอีเมลนี้จะแจ้งเตือนไปยังผู้สมัครว่าคุณได้อ่านข้อความแล้ว
               <a href="${hostname}/alert">ส่งแจ้งเตือนว่าอ่านแล้ว</a>
-              <img src="${hostname}/image"/>
+              <img style="display:hidden;" src="${hostname}/image"/>
           </body>
           </html>
       `,
