@@ -90,12 +90,14 @@ async function alertmsg(req, res) {
           </html>
       `,
     };
+    console.log("sending email...")
     transporter.sendMail(message, (err, info) => {
-      if (err) console.log(err);
-      else {
-        console.log(info);
-      }
+        if (err) console.log(err);
+        else {
+            console.log(info);
+        }
     });
+    console.log("sent email")
   } catch (error) {
     console.error(error);
   }
