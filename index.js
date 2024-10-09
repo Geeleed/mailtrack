@@ -3,6 +3,7 @@ const app = require("express")();
 const nodemailer = require("nodemailer");
 const path = require('path');
 const hostname = process.env.server_hostname_global;
+// const hostname = process.env.server_hostname_local;
 app.get("/", async (req, res) => {
   res.send(`
     <a href="${hostname + "/send"}">send the apply</a>
@@ -44,7 +45,7 @@ app.get("/send", async (req, res) => {
           </head>
           <body>
                 ทดลองระบบ การเปิดอีเมลนี้จะแจ้งเตือนไปยังผู้สมัครว่าคุณได้อ่านข้อความแล้ว
-              <img src="${hostname}/image"/>
+              <img src="https://mailtrack-brown.vercel.app/image"/>
           </body>
           </html>
       `,
@@ -103,4 +104,4 @@ async function alertmsg(req, res) {
   }
 }
 
-app.listen(8500, () => console.log("ระบบเปิดแล้ว"));
+app.listen(8500, () => console.log("ระบบเปิดแล้ว","http://localhost:8500"));
