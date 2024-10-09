@@ -101,10 +101,9 @@ app.get("/alert", async (req, res) => {
       if (err) console.log(err);
       else {
         console.log(info);
+        res.json({ msg: "sent email success" });
       }
     });
-    console.log("sent email");
-    res.json({ msg: "ok" });
   } catch (error) {
     console.error(error);
     res.json({ msg: "err" });
