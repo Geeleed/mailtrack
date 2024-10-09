@@ -1,10 +1,14 @@
+require('dotenv').config()
 const app = require("express")();
 const nodemailer = require("nodemailer");
+
 app.get("/", async (req, res) => {
+  res.send("Hello world");
+});
+app.get("/opened", async (req, res) => {
   console.log("อีเมลถูกเปิดแล้ว");
   res.sendFile("");
 });
-
 app.get("/nodemailer", async (req, res) => {
   try {
     const transporter = nodemailer.createTransport({
@@ -29,9 +33,7 @@ app.get("/nodemailer", async (req, res) => {
               <title>Document</title>
           </head>
           <body>
-              <img src="http://localhost:8000/image"/>
-              <img src="http://192.168.176.207:8000/image"/>
-              <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRb8BMw3RWhIF-wAiHpwibf7h0SNZUZRa0qA0IQ-d5p3EuNL0zR"/>
+              <img src="${process.env.server_hostname}/opened"/>
           </body>
           </html>
       `,
@@ -48,3 +50,5 @@ app.get("/nodemailer", async (req, res) => {
     res.json({ msg: "fail" });
   }
 });
+
+app.listen(8500, () => console.log("ระบบเปิดแล้ว"));
