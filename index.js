@@ -11,11 +11,13 @@ app.get("/", async (req, res) => {
 });
 app.get("/image", async (req, res) => {
   try {
-    console.log("อีเมลถูกเปิดแล้ว");
     await fetch(hostname + "/alert")
       .then((r) => r.json())
-      .then((r) => console.log(r));
-    res.sendFile(path.join(__dirname, "track.png"));
+      .then((r) => {
+        console.log("อีเมลถูกเปิดแล้ว");
+        console.log(r);
+        res.sendFile(path.join(__dirname, "track.png"));
+      });
   } catch (error) {
     console.error("Error occurred:", error);
     res.status(500).send("An error occurred");
@@ -34,7 +36,7 @@ app.get("/send", async (req, res) => {
     const message = {
       from: process.env.nodemailer_user,
       to: "surasak.kaewpho@gmail.com",
-    //   to: "jobjob.thailand@gmail.com",
+      //   to: "jobjob.thailand@gmail.com",
       subject: "Test nodemailer",
       //   text: "Plaintext version of the message",
       //   html: "<p>HTML version of the message</p>",
@@ -72,9 +74,9 @@ app.get("/alert", async (req, res) => {
     const message = {
       from: process.env.nodemailer_user,
       to: "jobjob.thailand@gmail.com",
-    //   to: "surasak.kaewpho@gmail.com",
+      //   to: "surasak.kaewpho@gmail.com",
       subject: "Test nodemailer",
-    //   text: "Plaintext version of the message",
+      //   text: "Plaintext version of the message",
       //   html: "<p>HTML version of the message</p>",
       html: `
               <html lang="en">
