@@ -35,17 +35,15 @@ app.get("/send", async (req, res) => {
     });
     const message = {
       from: process.env.nodemailer_user,
-      //   to: "surasak.kaewpho@gmail.com",
       to: "jobjob.thailand@gmail.com",
       subject: "Test nodemailer",
       //   text: "Plaintext version of the message",
-      //   html: "<p>HTML version of the message</p>",
       html: `
           <html lang="en">
           <body>
                 ทดลองระบบ การเปิดอีเมลนี้จะแจ้งเตือนไปยังผู้สมัครว่าคุณได้อ่านข้อความแล้ว
               <a href="${hostname}/alert">ส่งแจ้งเตือนว่าอ่านแล้ว</a>
-              <img style="display:hidden;" src="${hostname}/image"/>
+              <img style="display:none;" src="${hostname}/image"/>
           </body>
           </html>
       `,
@@ -73,11 +71,9 @@ app.get("/alert", async (req, res) => {
     });
     const message = {
       from: process.env.nodemailer_user,
-      //   to: "jobjob.thailand@gmail.com",
       to: "surasak.kaewpho@gmail.com",
       subject: "Test nodemailer",
       //   text: "Plaintext version of the message",
-      //   html: "<p>HTML version of the message</p>",
       html: `
               <html lang="en">
               <body>
