@@ -78,7 +78,7 @@ app.get("/alert", async (req, res) => {
       from: process.env.nodemailer_user,
       to: "surasak.kaewpho@gmail.com",
       subject: "Test nodemailer",
-      text: "Plaintext version of the message",
+    //   text: "Plaintext version of the message",
       //   html: "<p>HTML version of the message</p>",
       html: `
             <!DOCTYPE html>
