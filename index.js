@@ -1,6 +1,7 @@
 require("dotenv").config();
 const app = require("express")();
 const nodemailer = require("nodemailer");
+const path = require('path');
 const hostname = process.env.server_hostname_global;
 app.get("/", async (req, res) => {
   res.send(`
