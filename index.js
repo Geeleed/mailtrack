@@ -8,13 +8,16 @@ app.get("/", async (req, res) => {
     `);
 });
 app.get("/image", async (req, res) => {
-  console.log("อีเมลถูกเปิดแล้ว");
-  //   await fetch(hostname + "/alert").then(() => {
-  // });
-  await alertmsg().then(() => {
-    res.sendFile("track.png");
-  });
+  try {
+    console.log("อีเมลถูกเปิดแล้ว");
+    await alertmsg();
+    res.sendFile(path.join(__dirname, "track.png"));
+  } catch (error) {
+    console.error("Error occurred:", error);
+    res.status(500).send("An error occurred");
+  }
 });
+
 app.get("/send", async (req, res) => {
   try {
     const transporter = nodemailer.createTransport({
