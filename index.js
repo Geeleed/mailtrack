@@ -23,9 +23,9 @@ app.get("/send", async (req, res) => {
     });
     const message = {
       from: process.env.nodemailer_user,
-      to: "surasak.kaewpho@gmail.com",
+      to: "jobjob.thailand@gmail.com",
       subject: "Test nodemailer",
-      text: "Plaintext version of the message",
+    //   text: "Plaintext version of the message",
       //   html: "<p>HTML version of the message</p>",
       html: `
         <!DOCTYPE html>
@@ -36,6 +36,7 @@ app.get("/send", async (req, res) => {
               <title>Document</title>
           </head>
           <body>
+                ทดลองระบบ การเปิดอีเมลนี้จะแจ้งเตือนไปยังผู้สมัครว่าคุณได้อ่านข้อความแล้ว
               <img src="${hostname}/image"/>
           </body>
           </html>
