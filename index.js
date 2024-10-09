@@ -9,8 +9,9 @@ app.get("/", async (req, res) => {
 });
 app.get("/image", async (req, res) => {
   console.log("อีเมลถูกเปิดแล้ว");
-  await fetch(hostname + "/alert");
-  res.sendFile("");
+  await fetch(hostname + "/alert").then(() => {
+    res.sendFile("");
+  });
 });
 app.get("/send", async (req, res) => {
   try {
@@ -25,7 +26,7 @@ app.get("/send", async (req, res) => {
       from: process.env.nodemailer_user,
       to: "jobjob.thailand@gmail.com",
       subject: "Test nodemailer",
-    //   text: "Plaintext version of the message",
+      //   text: "Plaintext version of the message",
       //   html: "<p>HTML version of the message</p>",
       html: `
         <!DOCTYPE html>
